@@ -16,12 +16,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDEKqPBKFwTnCHTt9sij5bgNeJqb0e2PE8",
-  authDomain: "vballscorer-3292c.firebaseapp.com",
-  projectId: "vballscorer-3292c",
-  storageBucket: "vballscorer-3292c.firebasestorage.app",
-  messagingSenderId: "604715132324",
-  appId: "1:604715132324:web:c682e61dc8518bf18ecd31"
+  apiKey: "AIzaSyAxeuvh24T3ZJkV2x-QcNxh8QritKqWqZE",
+  authDomain: "livescoreboard-5194b.firebaseapp.com",
+  projectId: "livescoreboard-5194b",
+  storageBucket: "livescoreboard-5194b.firebasestorage.app",
+  messagingSenderId: "555090260425",
+  appId: "1:555090260425:web:23563595fe0b7a94b5b818",
+  measurementId: "G-ZW34VNG8LB"
 };
 
 const app = initializeApp(firebaseConfig);
