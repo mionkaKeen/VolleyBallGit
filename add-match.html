@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Match - Volleyball Scorekeeper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Create New Match</h1>
+      <a href="index.html" class="btn secondary">&larr; Back</a>
+    </header>
+
+    <main class="card">
+      <!-- ID MUST MATCH add-match-form -->
+      <form id="add-match-form">
+        <div class="form-group">
+          <label for="division-select">Division</label>
+          <select id="division-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="court-select">Court</label>
+          <select id="court-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="official-select">Official</label>
+          <select id="official-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="team-a">Home Team (Team A)</label>
+          <input type="text" id="team-a" required />
+        </div>
+
+        <div class="form-group">
+          <label for="team-b">Away Team (Team B)</label>
+          <input type="text" id="team-b" required />
+        </div>
+
+        <div class="form-group">
+          <label for="match-time">Scheduled Start Time</label>
+          <input type="datetime-local" id="match-time" />
+        </div>
+
+        <div class="form-group">
+          <label for="match-status">Status</label>
+          <select id="match-status">
+            <option value="Scheduled">Scheduled</option>
+            <option value="Live">Live</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn primary">Save Match</button>
+      </form>
+
+      <div id="form-message" class="status-msg hidden"></div>
+    </main>
+  </div>
+
+  <!-- Note: type="module" is critical -->
+  <script type="module" src="add-match.js?v=7"></script>
+</body>
+</html>

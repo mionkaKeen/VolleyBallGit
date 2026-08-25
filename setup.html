@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Setup - Volleyball Scorekeeper</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏐</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Admin Management Setup</h1>
+      <div class="nav-links">
+        <a href="index.html" class="btn secondary">&larr; Back to Main Portal</a>
+        <a href="add-match.html" class="btn primary">➕ Create Match</a>
+      </div>
+    </header>
+
+    <!-- TAB NAVIGATION -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-divisions">Divisions</button>
+      <button class="tab-btn" data-tab="tab-courts">Courts</button>
+      <button class="tab-btn" data-tab="tab-officials">Officials</button>
+    </div>
+
+    <!-- TAB 1: DIVISIONS -->
+    <section id="tab-divisions" class="tab-content active card">
+      <h2>Manage Divisions</h2>
+      <form id="add-division-form" class="form-grid">
+        <div class="form-group">
+          <label for="division-name">Division Name</label>
+          <input type="text" id="division-name" placeholder="e.g., Varsity Girls, 18U Open" required />
+        </div>
+        <button type="submit" class="btn primary">Add Division</button>
+      </form>
+
+      <hr class="margin-top-sm" />
+      <h3>Existing Divisions</h3>
+      <ul id="divisions-list" class="data-list">
+        <li>Loading divisions...</li>
+      </ul>
+    </section>
+
+    <!-- TAB 2: COURTS -->
+    <section id="tab-courts" class="tab-content hidden card">
+      <h2>Manage Courts</h2>
+      <form id="add-court-form" class="form-grid">
+        <div class="form-group">
+          <label for="court-name">Court Identifier / Name</label>
+          <input type="text" id="court-name" placeholder="e.g., Main Court 1, Aux Gym B" required />
+        </div>
+        <button type="submit" class="btn primary">Add Court</button>
+      </form>
+
+      <hr class="margin-top-sm" />
+      <h3>Existing Courts</h3>
+      <ul id="courts-list" class="data-list">
+        <li>Loading courts...</li>
+      </ul>
+    </section>
+
+    <!-- TAB 3: OFFICIALS -->
+    <section id="tab-officials" class="tab-content hidden card">
+      <h2>Manage Officials</h2>
+      <form id="add-official-form" class="form-grid">
+        <div class="form-group">
+          <label for="official-first-name">First Name</label>
+          <input type="text" id="official-first-name" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label for="official-last-name">Last Name</label>
+          <input type="text" id="official-last-name" placeholder="Doe" required />
+        </div>
+        <button type="submit" class="btn primary">Add Official</button>
+      </form>
+
+      <hr class="margin-top-sm" />
+      <h3>Existing Officials</h3>
+      <ul id="officials-list" class="data-list">
+        <li>Loading officials...</li>
+      </ul>
+    </section>
+
+    <!-- STATUS NOTIFICATION -->
+    <div id="setup-message" class="status-msg hidden"></div>
+  </div>
+
+  <script type="module" src="setup.js?v=1"></script>
+</body>
+</html>

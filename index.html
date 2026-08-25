@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volleyball Scorekeeper</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏐</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Volleyball Scorekeeper</h1>
+      
+      <!-- User / Role Nav Bar -->
+      <div id="user-profile" class="hidden">
+        <span id="user-role-badge" class="badge">Role: -</span>
+        <span id="user-email"></span>
+        <button id="exit-btn" class="btn warning">Exit / Logout</button>
+      </div>
+    </header>
+
+    <!-- LANDING PAGE: Portal Selector (Default View) -->
+    <main id="portal-section" class="portal-container">
+      <div class="card portal-card">
+        <h2>Welcome to Volleyball Scorekeeper</h2>
+        <p>Select an option below to enter the portal.</p>
+
+        <div class="portal-grid">
+          <!-- Guest Access Card -->
+          <div class="dash-card" id="guest-access-btn">
+            <div class="dash-icon">👀</div>
+            <h3>Guest Viewer</h3>
+            <p>Watch live match scores and view past results in real-time.</p>
+            <button class="btn primary margin-top-sm">Enter as Guest</button>
+          </div>
+
+          <!-- Coach Login Card -->
+          <div class="dash-card" id="coach-access-btn">
+            <div class="dash-icon">📋</div>
+            <h3>Coach Portal</h3>
+            <p>Sign in to manage live scoring, create new matches, and update sets.</p>
+            <button class="btn secondary margin-top-sm">Coach Sign In</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- COACH LOGIN FORM (Hidden until Coach Login is clicked) -->
+    <div id="coach-login-card" class="card auth-card hidden">
+      <div class="modal-header">
+        <h2 id="auth-title">Coach Login</h2>
+        <button id="cancel-login-btn" class="close-btn">&times;</button>
+      </div>
+      <form id="auth-form">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="coach@school.edu" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" id="auth-submit-btn" class="btn primary">Sign In</button>
+      </form>
+      <div class="auth-toggle">
+        <span id="auth-toggle-text">Need an account?</span>
+        <button type="button" id="toggle-auth-mode" class="link-btn">Sign Up</button>
+      </div>
+      <div id="auth-error" class="error-msg hidden"></div>
+    </div>
+
+    <!-- VIEW 1: Guest Live Scoreboard (Read-Only) -->
+    <main id="guest-scoreboard-section" class="hidden">
+      <section class="card match-selector-card">
+        <div class="form-group inline">
+          <label for="guest-match-select">Select Live Match:</label>
+          <select id="guest-match-select">
+            <option value="">-- Choose a Match to View --</option>
+          </select>
+        </div>
+        
+        <div id="guest-match-meta" class="meta-details hidden">
+          <span class="badge" id="guest-meta-division">Division: -</span>
+          <span class="badge" id="guest-meta-court">Court: -</span>
+          <span class="badge" id="guest-meta-official">Official: -</span>
+          <span class="badge status-badge" id="guest-meta-status">Status: -</span>
+        </div>
+      </section>
+
+      <section id="guest-scoreboard-view" class="scoreboard disabled">
+        <div class="team-card">
+          <h2 id="guest-team-a-name">Home Team</h2>
+          <div class="score-display" id="guest-score-a">0</div>
+        </div>
+
+        <div class="match-center-info">
+          <div class="set-title">Live Scoreboard</div>
+        </div>
+
+        <div class="team-card">
+          <h2 id="guest-team-b-name">Away Team</h2>
+          <div class="score-display" id="guest-score-b">0</div>
+        </div>
+      </section>
+
+      <footer class="status-panel">
+        <div id="guest-db-status">Status: Connected</div>
+        <div id="guest-last-updated">Last Updated: Never</div>
+      </footer>
+    </main>
+
+    <!-- VIEW 2: Coach Scoring System (Full Controls) -->
+    <main id="coach-scoring-section" class="hidden">
+      <!-- Inside <main id="coach-scoring-section"> -->
+<section class="card">
+  <h2>Coach Scoring Panel</h2>
+  <div class="form-group inline margin-top-sm">
+    <label for="coach-match-select">Active Match:</label>
+    <select id="coach-match-select">
+      <option value="">-- Select Match to Score --</option>
+    </select>
+    <!-- Action Buttons -->
+    <a href="add-match.html" class="btn secondary">➕ Create Match</a>
+    <a href="setup.html" class="btn secondary">⚙️ Admin Setup</a>
+  </div>
+</section>
+      <section id="coach-scoreboard-view" class="scoreboard disabled">
+        <!-- Team A Controls -->
+        <div class="team-card">
+          <h2 id="coach-team-a-name">Home Team</h2>
+          <div class="score-display" id="coach-score-a">0</div>
+          <div class="controls">
+            <button class="btn score-btn add-point" data-team="A" data-delta="1">+1 Point</button>
+            <button class="btn score-btn sub-point" data-team="A" data-delta="-1">-1 Point</button>
+          </div>
+        </div>
+
+        <!-- Center Reset -->
+        <div class="match-center-info">
+          <button id="reset-btn" class="btn warning">Reset Score</button>
+        </div>
+
+        <!-- Team B Controls -->
+        <div class="team-card">
+          <h2 id="coach-team-b-name">Away Team</h2>
+          <div class="score-display" id="coach-score-b">0</div>
+          <div class="controls">
+            <button class="btn score-btn add-point" data-team="B" data-delta="1">+1 Point</button>
+            <button class="btn score-btn sub-point" data-team="B" data-delta="-1">-1 Point</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="status-panel">
+        <div id="coach-db-status">Status: Ready</div>
+        <div id="coach-last-updated">Last Updated: Never</div>
+      </footer>
+    </main>
+  </div>
+
+  
+  <script type="module" src="app.js?v=5"></script>
+</body>
+</html>
