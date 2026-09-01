@@ -121,3 +121,14 @@ select {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.error {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
